@@ -1,0 +1,17 @@
+//link: https://leetcode.com/problems/single-number/
+
+Solution:
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int res = nums[0];
+        for (int i = 1; i < nums.size(); i++) {
+            res = res^nums[i];
+        }
+        return res;
+    }
+};
+
+//十进制异或运算会转换为二进制异或运算
+//https://blog.csdn.net/SenyeLicone/article/details/52196039
+//https://baike.baidu.com/item/%E5%BC%82%E6%88%96
