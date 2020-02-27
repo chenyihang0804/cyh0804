@@ -7,7 +7,6 @@ public:
         string s = "";
         if (n < 1)
             return s;
-        int i = 0;
         while (n > 0) {
             n = n - 1;
             int d = n % 26;
