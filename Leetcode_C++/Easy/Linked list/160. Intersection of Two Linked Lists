@@ -1,0 +1,46 @@
+//link: https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+Solution:
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        if (!headA || !headB) {
+            return NULL;
+        }
+        int lenA = getLength(headA), lenB = getLength(headB);
+        if (lenA < lenB) {
+            for (int i = 0; i < lenB - lenA; ++i) {
+                headB = headB->next;
+            } 
+        }
+        else {
+            for (int i = 0; i < lenA - lenB; i++) {
+                headA = headA->next;
+            }
+        }
+        while (headA && headB && headA != headB) {
+            headA = headA->next;
+            headB = headB->next;
+        }
+        return (headA && headB) ? headA : NULL;
+    }
+    
+    int getLength(ListNode *head) {
+        int num = 0;
+        while (head) {
+            ++num;
+            head = head->next;
+        }
+        return num;
+    }
+};
+
+//把长的链表缩短和短的链表一样的长度，然后遍历对比找到交叉节点
