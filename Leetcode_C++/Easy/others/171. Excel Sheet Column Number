@@ -1,0 +1,17 @@
+//link: https://leetcode.com/problems/excel-sheet-column-number/
+
+Solution:
+class Solution {
+public:
+    int titleToNumber(string s) {
+        int res = 0;
+        for (auto letter : s) {
+            res = res * 26 + letter - 'A' + 1;
+        }
+        return res;
+    }
+};
+
+//26进制转10进制，注意有个差1的差别
+//序列A-Z依次对应序列1-26。进制转换的基本办法就是“取余法”，换算规则如下：
+//ABZ = 1*26² + 2 * 26¹ + 26*26°= 676 + 52 + 26 = 754
