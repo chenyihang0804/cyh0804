@@ -1,7 +1,7 @@
 //link: https://leetcode.com/problems/excel-sheet-column-number/
 
 Solution:
-class Solution {
+class Solution_1 {
 public:
     int titleToNumber(string s) {
         int res = 0;
@@ -17,4 +17,19 @@ public:
 //ABZ = 1*26² + 2 * 26¹ + 26*26°= 676 + 52 + 26 = 754
 //for(auto i : j)和for(auto &i : j)的区别
 
-//这道题试了两种解法都会导致整数溢出
+//这道题第一种解法都会导致整数溢出
+
+Solution_2
+class Solution {
+public:
+    int titleToNumber(string s) {
+        int n = s.size();
+        int res = 0;
+        long tmp = 1;
+        for (int i = n; i >= 1; --i) {
+            res += (s[i - 1] - 'A' + 1) * tmp; 
+            tmp *= 26;
+        }
+        return res;
+    }
+};
